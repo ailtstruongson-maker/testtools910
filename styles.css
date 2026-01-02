@@ -1,0 +1,110 @@
+
+:root {
+    --text-primary-color: #111827; /* slate-900 */
+    --text-secondary-color: #6b7280; /* slate-500 */
+    --border-color: #e5e7eb; /* slate-200 */
+}
+html.dark {
+    --text-primary-color: #f8fafc; /* slate-50 */
+    --text-secondary-color: #94a3b8; /* slate-400 */
+    --border-color: #334155; /* slate-700 */
+    color-scheme: dark;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- GLASSMORPHISM CARD STYLE --- */
+.chart-card {
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(255,255,255,0.2) inset;
+    border-radius: 1rem;
+}
+
+.dark .chart-card {
+    background-color: rgba(30, 41, 59, 0.7);
+    border-color: rgba(51, 65, 85, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+
+/* --- EXPORT OVERRIDES --- */
+body.is-capturing .chart-card {
+    background-color: white !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 0 !important;
+}
+.dark body.is-capturing .chart-card {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+}
+
+.bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+.dark .bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.animate-blob { animation: blob 7s infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.modal-overlay { animation: fadeIn 0.3s ease-out forwards; backdrop-filter: blur(4px); }
+.modal-content { animation: slideInUp 0.3s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInUp { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+/* Scrollbar Custom */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.pong-loader { position: relative; width: 100px; height: 60px; }
+.pong-ball { position: absolute; width: 10px; height: 10px; background: #fff; border-radius: 50%; animation: pong-ball-anim 1.5s infinite linear; }
+.pong-paddle { position: absolute; width: 4px; height: 20px; background: #fff; top: 20px; }
+.pong-paddle.left { left: 0; }
+.pong-paddle.right { right: 0; }
+@keyframes pong-ball-anim {
+    0%, 100% { left: 45px; top: 25px; }
+    25% { left: 5px; top: 0px; animation-timing-function: ease-in; }
+    50% { left: 45px; top: 25px; }
+    75% { left: 85px; top: 50px; animation-timing-function: ease-in; }
+}
+
+/* Animations */
+.animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.animate-fade-in-up { animation: fadeInUp 0.4s ease-out forwards; }
+@keyframes fadeInUp { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
